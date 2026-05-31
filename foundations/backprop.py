@@ -13,8 +13,16 @@ class Solution:
         # Forward: z = dot(x, w) + b, y_hat = sigmoid(z)
         # Loss: L = 0.5 * (y_hat - y_true)^2
         # Return: (dL_dw rounded to 5 decimals, dL_db rounded to 5 decimals)
+        # forward
         z = x @ w + b
-        y_hat = 1.0/(1 + np.exp(-z))
-        dL_dw = (y_hat - y_true)*y_hat*(1 - y_hat)*x
-        dL_db = (y_hat - y_true)*y_hat*(1 - y_hat)
+        y_hat = 1.0 / (1.0 + np.exp(-z))
+        dL_dy_hat = (y_hat - y_true)
+        dyhat_dz = y_hat*(1.0 - y_hat)
+        dz_dw = x
+        dz_db = 1
+
+        dL_dw = dL_dy_hat*dyhat_dz*dz_dw
+        dL_db = dL_dy_hat*dyhat_dz*dz_db
         return (np.round(dL_dw, 5),np.round(dL_db, 5))
+
+        
