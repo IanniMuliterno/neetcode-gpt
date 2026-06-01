@@ -10,7 +10,7 @@ class Solution:
         t1 = to_reshape
         M = t1.shape[0]
         N = t1.shape[1]
-        t1 = torch.reshape(t1,(int((M*N)/2),int(2)))
+        t1 = torch.reshape(t1,((M*N)//2,2))
         return t1
 
     def average(self, to_avg: TensorType[float]) -> TensorType[float]:
