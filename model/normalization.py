@@ -14,7 +14,7 @@ class Solution:
         
         n = len(x)
         mu = np.mean(x)
-        var = np.var(x)
+        var = np.sum((x - mu)**2)/n 
         eps = 1e-5
         x_hat = (x - mu)/np.sqrt(var + eps)
         return np.round(gamma * x_hat + beta,5)
